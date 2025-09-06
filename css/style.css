@@ -1,5 +1,256 @@
-*{
+:root {
+  /* Brand palette */
+  --primary-color:   #2c2c2c; /* base/dark */
+  --secondary-color: #e5e5e5; /* light */
+  --accent-color:    #1e3a8a; /* deep jazz blue */
+  --striking-color:  #d4af37; /* brass/gold */
+  --support-color:   #7a1e2e; /* red wine */
+
+  /* Semantics (brug disse i komponenter) */
+  --bg-color:        var(--primary-color);
+  --surface-color:   #1f1f1f;       /* lidt lysere end primary til kort/nav */
+  --text-color:      var(--secondary-color);
+  --muted-text:      #b8b8b8;
+  --link-color:      var(--accent-color);
+  --focus-ring:      var(--striking-color);
+
+  /* Typografi */
+  --font-family: 'Bebas Neue', Arial, sans-serif;
+  --font-size-2xs: 12px;
+  --font-size-xs:  13px;
+  --font-size-sm:  14px;
+  --font-size-base:16px;
+  --font-size-md:  18px;
+  --font-size-lg:  20px;
+  --font-size-xl:  24px;
+  --font-size-2xl: 28px;
+  --font-size-hero: clamp(2.5rem, 6vw, 4.5rem);
+
+  /* Weights + line-height (læsbarhed) */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+
+  /* Radius + motion */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --duration: .18s;
+
+  /* Borders/keys */
+  --border-color: #3a3a3a;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.35);
+}
+
+/* Light mode opt-in (hvis du vil have en “dag” version) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color:        #f6f6f6;
+    --surface-color:   #ffffff;
+    --text-color:      #1a1a1a;
+    --muted-text:      #5a5a5a;
+    --border-color:    #e6e6e6;
+    /* brandfarverne er de samme – derfor holder identiteten */
+  }
+}
+
+/* Reset Style */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+header {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* Brand name */
+header .brand {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+/* Navigation */
+header .navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header .navbar, ul, li {
+    position: relative;
+    margin: 0 20px;
+}
+
+header .navbar, ul, li a {
+    text-decoration: none;
+    text-decoration: underline none;
+    font-size: var(--font-size-base);
+    padding: 15px 10px;
+    color: var(--primary-color);
+    display: block;
+    font-weight: var(--font-weight-medium);
+    transition: color 0.3s ease;
+}
+
+header .navbar, ul, li a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Header / nav / kort lægger sig på en “surface” */
+header, .navbar, .card {
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.events-btn {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.events-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);    
+}
+
+#menu-bar {
+    display: none;
+}
+
+/* Mobil menu label*/
+header label {
+    font-size: var(--font-size-large);
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: none;
+    font-weight: var(--font-weight-semibold);
+}
+
+/*Hero section*/
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    margin-top: 80px;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://unsplash.com/photos/man-playing-saxophone-Otx5FHbr3OE");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    color: var(--striking-color);
+    font-size: var(--font-size-hero);
+    font-weight: var(--font-weight-bold);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    letter-spacing: 2px;
+}
+
+/* Mobil/tablet styles - kun ét CSS-breakpoint*/
+@media (max-width: 758px) {
+
+    header {
+        padding: 20px;
+    }
+
+    header .brand {
+        font-size: var(--font-size-large);
+    }
+
+    /* Vis mobil menu label*/
+    header label {
+        display: block;
+    }
+
+    /* Skjule  og positionere navbar*/
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-top: 1px solid rgba(0,0,0,0.1);
+        display: none;
+    }
+
+    header .navbar ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    header .navbar ul li {
+        width: 100%;
+        margin: 0;
+    }
+
+    header .navbar ul li a {
+        font-size: var(--font_size-medium);
+        padding: 20px;
+        border-bottom: 1px solid var(--surface-color);
+        text-align: left;
+    }
+
+    .workshop-btn {
+        padding: 10px 20px;
+        font-size: var(--font-size-small);
+    }
+
+    /* Vis navbar når checkbox er checked :) */
+    #menu-bar:checked ~ .navbar {
+        display: block;
+    }
+
+    .hero {
+        margin-top: 70px;
+        height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-hero-mobil);
+        padding: 0 20px;
+    }
 }
