@@ -91,12 +91,17 @@ header {
 
 /* Brand name */
 header .brand {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-large);
     font-weight: var(--font-weight-bold);
-    color: var(--accent-color);
+    color: var(--striking-color);
     letter-spacing: 2px;
     text-decoration: none;
 }
+
+header .navbar {
+    border: none;
+}
+
 
 /* Navigation */
 header .navbar ul {
@@ -108,22 +113,22 @@ header .navbar ul {
 header .navbar, ul, li {
     position: relative;
     margin: 0 20px;
+    text-decoration: none;
 }
 
 header .navbar, ul, li a {
     text-decoration: none;
-    text-decoration: underline none;
     font-size: var(--font-size-base);
-    padding: 15px 10px;
-    color: var(--primary-color);
+    color: var(--support-color);
     display: block;
     font-weight: var(--font-weight-medium);
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 header .navbar, ul, li a:hover {
     color: var(--secondary-color);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Header / nav / kort lægger sig på en “surface” */
@@ -134,7 +139,7 @@ header, .navbar, .card {
 }
 
 .events-btn {
-    background-color: var(--primary-color);
+    background-color: var(--surface-color);
     color: var(--accent-color);
     padding: 12px 24px;
     border: none;
@@ -171,7 +176,7 @@ header label {
     height: 100vh;
     min-height: 600px;
     margin-top: 80px;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://unsplash.com/photos/man-playing-saxophone-Otx5FHbr3OE");
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1525093485273-34834413e1ba?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -179,6 +184,7 @@ header label {
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: var(--);
 }
 
 .hero-content h1 {
@@ -187,6 +193,22 @@ header label {
     font-weight: var(--font-weight-bold);
     text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
     letter-spacing: 2px;
+}
+
+a.events {
+    color: var(--striking-color);
+}
+
+
+
+.instrument {
+    position: relative;
+    background-image: url("https://images.unsplash.com/photo-1634509507978-237c1dbc1505?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    min-height: 40vh;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
 }
 
 /* Mobil/tablet styles - kun ét CSS-breakpoint*/
